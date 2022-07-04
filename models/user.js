@@ -1,26 +1,25 @@
 'use strict';
 const {
-  Model
+    Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class user extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
+    class user extends Model {
+        static associate(models) {
+            user.hasOne(models.tracker)
+        }
     }
-  }
-  user.init({
-    name: { type: DataTypes.STRING, unique: true, allowNull: false},
-    email: { type: DataTypes.STRING, allowNull: false},
-    phone: { type: DataTypes.INTEGER },
-    password: { type: DataTypes.STRING, allowNull: false}
-  }, {
-    sequelize,
-    modelName: 'user',
-  });
-  return user;
+
+    user.init({
+        name: {type: DataTypes.STRING, unique: true, allowNull: false},
+        email: {type: DataTypes.STRING, allowNull: false},
+        password: {type: DataTypes.STRING, allowNull: false}
+    }, {
+        sequelize,
+        modelName: 'user',
+    });
+    return user;
 };
+
+// npx sequelize-cli model:generate --name product --attributes title:string,description:string,image:string,color:string
+// npx sequelize-cli model:generate --name recipe --attributes title:string,description:string,image:string,color:string
+// npx sequelize-cli model:generate --name tracker --attributes day:string,color:string
