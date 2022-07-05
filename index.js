@@ -5,9 +5,10 @@ const corsMiddleWare = require("cors");
 //routers
 const authRouter = require("./routers/auth");
 const productRouter = require("./routers/product");
+const recipeRouter = require("./routers/recipes");
 
 //constants
-const { PORT } = require("./config/constants");
+const {PORT} = require("./config/constants");
 
 // Create an express app
 const app = express();
@@ -25,9 +26,10 @@ app.use(express.json());
 //routes
 app.use("/auth", authRouter);
 app.use("/product", productRouter);
+app.use("/recipe", recipeRouter);
 
 
 //start listening
 app.listen(PORT, () => {
-  console.log(`Listening on port: ${PORT}`);
+    console.log(`Listening on port: ${PORT}`);
 });
