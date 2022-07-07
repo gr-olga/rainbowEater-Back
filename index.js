@@ -6,6 +6,7 @@ const corsMiddleWare = require("cors");
 const authRouter = require("./routers/auth");
 const productRouter = require("./routers/product");
 const recipeRouter = require("./routers/recipes");
+const trackerRouter = require("./routers/tracker");
 
 //constants
 const {PORT} = require("./config/constants");
@@ -27,6 +28,7 @@ app.use(express.json());
 app.use("/auth", authRouter);
 app.use("/product", productRouter);
 app.use("/recipe", recipeRouter);
+app.use("/tracker", trackerRouter);
 
 
 //start listening

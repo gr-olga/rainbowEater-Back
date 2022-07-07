@@ -16,13 +16,5 @@ router.get("/", async (req, res) => {
     }
 });
 
-router.get("/tracker", async (req, res) => {
 
-    try {
-        const track = await Tracker.findAll()
-        res.send(track);
-    } catch (e) {
-        console.log(e.message);
-    }
-});
 module.exports = router;
