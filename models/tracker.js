@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   tracker.init({
     day:{ type: DataTypes.STRING, allowNull: false},
-    color:{ type: DataTypes.STRING, allowNull: false}
+    color:{ type: DataTypes.ARRAY(DataTypes.STRING), allowNull: false},
   }, {
     sequelize,
     modelName: 'tracker',

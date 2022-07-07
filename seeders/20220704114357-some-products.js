@@ -70,3 +70,5 @@ module.exports = {
 
     }
 };
+
+// npx sequelize-cli seed:generate --name some-trackers

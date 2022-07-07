@@ -3,6 +3,7 @@ const {where, Op} = require("sequelize");
 const sequelize = require("sequelize");
 const {product: Product} = require("../models/");
 const Recipes = require("../models/").recipe;
+const Tracker = require("../models/").tracker;
 
 const router = new Router();
 
@@ -15,17 +16,11 @@ router.get("/", async (req, res) => {
     }
 });
 
-router.get("/:color", async (req, res) => {
-    const color = req.params.color
+router.get("/tracker", async (req, res) => {
+
     try {
-        const recipe = await Recipes.findAll({
-            where: {
-                color: {
-                    [Op.eq]: color,
-                },
-            }
-        })
-        res.send(recipe);
+        const track = await Tracker.findAll()
+        res.send(track);
     } catch (e) {
         console.log(e.message);
     }

@@ -25,7 +25,15 @@ module.exports = {
           password: "coco",
           createdAt: new Date(),
           updatedAt: new Date(),
-        },     
+        },
+          {
+          name: "ggg@ooo.ttt",
+          email: "ggg@ooo.ttt",
+          // password:` $2b$10$mWoyp2YZlzKa19D6Yijpy.gzgFEdGfTPKylW6/9ZTDIXKeqM6z4ji`,
+          password:"ggg@ooo.ttt",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );
