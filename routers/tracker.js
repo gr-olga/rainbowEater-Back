@@ -7,7 +7,7 @@ router.get("/", authMiddleware, async (req, res) => {
     const userId = req.user.dataValues.id
     console.log("userId", userId);
     try {
-        const track = await Tracker.findByPk(userId)
+        const track = await Tracker.findAll({where: {userId: userId}})
         res.send(track);
     } catch (e) {
         console.log(e.message);
