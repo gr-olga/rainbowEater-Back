@@ -27,7 +27,7 @@ app.use(express.json());
 //routes
 app.use("/auth", authRouter);
 app.use("/product", productRouter);
-app.use("/recipe", recipeRouter);
+app.use("/recipes", recipeRouter);
 app.use("/tracker", trackerRouter);
 
 
