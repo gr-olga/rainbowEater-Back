@@ -1,7 +1,9 @@
 const {Router} = require("express");
+const {Op} = require("sequelize");
 
 const Recipes = require("../models/").recipe;
 const Product = require("../models/").product;
+const ProductRecipes = require("../models/").productRecipes;
 
 
 const router = new Router();
@@ -30,6 +32,39 @@ router.get("/:id", async (req, res) => {
             return res.status(404).send("Product not found");
         }
         res.send(oneProd);
+    } catch (e) {
+        console.log(e.message);
+    }
+});
+
+router.post("/", async (req, res) => {
+    try {
+        const {title, description, image, color, product} = req.body;
+        if (!title || !image || !color) {
+            res.status(400).send("missing parameters");
+        } else {
+            const newRecipe = await Recipes.create({
+                title: title,
+                description: description,
+                image: image,
+                color: color,
+            });
+            const products = await Product.findOne({
+                where: {
+                    title: {
+                        [Op.eq]: product,
+                    },
+                }
+            })
+            if (products) {
+                const newProductRecipe = await ProductRecipes.create({
+                    productId: products.id,
+                    recipeId: newRecipe.id
+                })
+                console.log(newProductRecipe);
+            }
+            res.send(newRecipe);
+        }
     } catch (e) {
         console.log(e.message);
     }
