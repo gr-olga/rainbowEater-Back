@@ -118,6 +118,22 @@ module.exports = {
                     createdAt: new Date(),
                     updatedAt: new Date(),
                 },
+                {
+                    title: "carrot",
+                    description: "Carrots can be eaten in a variety of ways. Only 3 percent of the β-carotene in raw carrots is released during digestion: this can be improved to 39% by pulping, cooking and adding cooking oil. Alternatively they may be chopped and boiled, fried or steamed, and cooked in soups and stews, as well as baby and pet foods. A well-known dish is carrots julienne. Together with onion and celery, carrots are one of the primary vegetables used in a mirepoix to make various broths.",
+                    image: "https://i.pinimg.com/564x/10/6a/89/106a89f4b15f421c493b7568e13c131b.jpg",
+                    color: "orange",
+                    createdAt: new Date(),
+                    updatedAt: new Date(),
+                },
+                {
+                    title: "Beets",
+                    description: "Raw beetroot is 88% water, 10% carbohydrates, 2% protein, and less than 1% fat (see table). In a 100-gram (3+1⁄2-ounce) amount providing 180 kilojoules (43 kilocalories) of food energy, raw beetroot is a rich source (27% of the Daily Value - DV) of folate and a moderate source (16% DV) of manganese, with other nutrients having insignificant content (table).",
+                    image: "https://i.pinimg.com/564x/71/21/ca/7121cad9402e394ab2eb43dd28e98c92.jpg",
+                    color: "orange",
+                    createdAt: new Date(),
+                    updatedAt: new Date(),
+                },
 
             ]
         )
