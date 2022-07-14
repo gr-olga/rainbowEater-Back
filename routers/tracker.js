@@ -14,20 +14,25 @@ router.get("/", authMiddleware, async (req, res) => {
     }
 });
 
+
 router.post("/", authMiddleware, async (req, res, next) => {
     try {
         const userId = req.user.dataValues.id
         console.log(userId);
         const {day, color} = req.body;
-        console.log(day, color);
+        console.log(day, color, 'here');
         if (!day || !color || !userId) {
             res.status(400).send("missing parameters");
         }
         const tracker = await Tracker.findOne({where: {userId: userId, day: day}})
-        if (tracker) {
+        if (tracker && tracker.color.length !== 0) {
+            const prevTrack = tracker.color.filter((c) => c !== color)
+            console.log(prevTrack, "prevTrack");
             const updateTracker = await tracker.update({
-                color: color,
+                color: [...new Set([...prevTrack, ...color])],
+                // color: [...color],
             })
+            console.log(updateTracker, "updateTracker");
             res.send(updateTracker);
         } else {
             const createTracker = await Tracker.create(
@@ -43,3 +48,4 @@ router.post("/", authMiddleware, async (req, res, next) => {
     }
 });
 module.exports = router;
+
